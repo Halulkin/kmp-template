@@ -1,4 +1,4 @@
-package com.monstarlab.kmptemplate.android
+package com.monstarlab.kmptemplate.android.designsystem
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
