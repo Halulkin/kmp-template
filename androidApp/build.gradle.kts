@@ -90,8 +90,6 @@ dependencies {
     implementation(libs.android.activity.compose)
 //    implementation(libs.bundles.android.lifecycle)
 
-
-//    implementation(libs.koin.core)
-//    implementation(libs.koin.annotations)
-//    ksp(libs.koin.ksp.compiler)
+    // TODO - okhttp logger added just to fix the nStack issue
+    implementation(libs.okhttp.logger)
 }
