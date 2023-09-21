@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinCompose)
     id("dk.nstack.translation.plugin")
 }
 
@@ -74,21 +75,20 @@ android {
 
 dependencies {
     implementation(projects.shared)
-
     // Android
     implementation(libs.android.splash)
-    // Koin
-    implementation(libs.koin.android)
     // Other
     implementation(libs.nstack)
-
     // Compose
     implementation(platform(libs.android.compose.bom))
     implementation(libs.android.compose.ui)
-    implementation(libs.android.compose.material3)
+    implementation(libs.android.compose.ui.tooling)
+    implementation(libs.android.compose.ui.tooling.preview)
+//    implementation(libs.android.compose.material3)
+    implementation(libs.android.compose.material)
     implementation(libs.android.compose.foundation)
     implementation(libs.android.activity.compose)
-//    implementation(libs.bundles.android.lifecycle)
+    implementation(libs.bundles.google.accompanist)
 
     // TODO - okhttp logger added just to fix the nStack issue
     implementation(libs.okhttp.logger)
