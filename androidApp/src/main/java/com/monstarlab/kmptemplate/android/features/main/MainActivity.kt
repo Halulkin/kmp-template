@@ -10,7 +10,8 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.monstarlab.kmptemplate.android.designsystem.MyApplicationTheme
+import com.monstarlab.kmptemplate.android.designsystem.theme.AppTheme
+import com.monstarlab.kmptemplate.android.features.login.ui.LoginRoute
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -33,8 +34,8 @@ class MainActivity : ComponentActivity() {
 
     private fun content() {
         setContent {
-            MyApplicationTheme {
-
+            AppTheme {
+                LoginRoute()
             }
         }
     }
