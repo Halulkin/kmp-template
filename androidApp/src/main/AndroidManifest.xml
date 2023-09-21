@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:allowBackup="false"
+        android:name="com.monstarlab.kmptemplate.android.App"
+        android:allowBackup="true"
+        android:fullBackupOnly="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".features.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- nstack app id and key from build.gradle manifest placeholder -->
+        <meta-data
+            android:name="dk.nodes.nstack.appId"
+            android:value="${appId}"
+            tools:replace="android:value" />
+        <meta-data
+            android:name="dk.nodes.nstack.apiKey"
+            android:value="${apiKey}"
+            tools:replace="android:value" />
+
+        <meta-data
+            android:name="dk.nodes.nstack.env"
+            android:value="${env}"
+            tools:replace="android:value" />
     </application>
-</manifest> 
+</manifest>
