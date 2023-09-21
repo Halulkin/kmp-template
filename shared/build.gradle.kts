@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinCompose)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -34,6 +35,7 @@ kotlin {
                 api(libs.ktor.core)
                 api(libs.ktor.serialization.kotlinx.json)
                 api(libs.ktor.client.content.negotiation)
+                api(libs.ktor.client.logging)
                 // Kotlin
                 api(libs.kotlin.serialization.json)
                 api(libs.kotlin.coroutines.core)
@@ -41,9 +43,6 @@ kotlin {
                 api(libs.koin.core)
                 // MOKO - MVVM
                 api(libs.moko.mvvm.core)
-
-//                // Other
-//                implementation(libs.nstack)
             }
         }
         val commonTest by getting {
@@ -57,6 +56,9 @@ kotlin {
                 implementation(libs.ktor.client.android)
                 // Kotlin
                 implementation(libs.kotlin.coroutines.android)
+                // Koin
+                api(libs.koin.android)
+                api(libs.koin.compose)
             }
         }
 
