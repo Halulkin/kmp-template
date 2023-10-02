@@ -3,6 +3,10 @@ package com.monstarlab.kmptemplate.android.features.login.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.monstarlab.kmptemplate.android.features.resources.Resources
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
@@ -16,7 +20,8 @@ import org.koin.compose.koinInject
  */
 class LoginCoordinator(
     val viewModel: LoginViewModel,
-    val scope: CoroutineScope
+    val scope: CoroutineScope,
+    val navigator: Navigator
 ) {
     val screenStateFlow = viewModel.stateFlow
 
@@ -24,6 +29,7 @@ class LoginCoordinator(
         viewModel.stateFlow
             .filter { it.isLoggedIn }
             .onEach {
+                navigator.push(Resources())
                 println("LoginCoordinator: Logged in")
             }
             .launchIn(scope)
@@ -33,12 +39,14 @@ class LoginCoordinator(
 @Composable
 fun rememberLoginCoordinator(
     viewModel: LoginViewModel = koinInject(),
-    scope: CoroutineScope = rememberCoroutineScope()
+    scope: CoroutineScope = rememberCoroutineScope(),
+    navigator: Navigator = LocalNavigator.currentOrThrow
 ): LoginCoordinator {
     return remember(viewModel, scope) {
         LoginCoordinator(
             viewModel = viewModel,
-            scope = scope
+            scope = scope,
+            navigator = navigator
         )
     }
 }
