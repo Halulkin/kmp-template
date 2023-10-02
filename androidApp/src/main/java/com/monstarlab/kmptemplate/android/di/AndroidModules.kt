@@ -54,4 +54,5 @@ val resourcesModule = module {
     single { ResourcesViewModel(get()) }
     single { GetResourcesUseCase(get() as ResourceRepositoryImpl) }
     single { ResourceRepositoryImpl(get() as ResourcesApiImpl) }
+    single { ResourcesApiImpl(get()) }
 }
