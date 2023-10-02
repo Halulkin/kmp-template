@@ -46,6 +46,8 @@ kotlin {
                 api(libs.koin.core)
                 // MOKO - MVVM
                 api(libs.moko.mvvm.core)
+                // Voyager
+                api(libs.bundles.voyager)
             }
         }
         val commonTest by getting {
