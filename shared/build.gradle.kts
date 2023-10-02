@@ -31,6 +31,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // Compose
+                implementation(compose.runtime)
+                implementation(compose.foundation)
                 // Ktor
                 api(libs.ktor.core)
                 api(libs.ktor.serialization.kotlinx.json)
