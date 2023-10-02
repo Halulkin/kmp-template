@@ -8,7 +8,7 @@ import io.ktor.client.request.parameter
 
 class ResourcesApiImpl(private val httpClient: HttpClient) : ResourcesApi {
     override suspend fun getResources(page: Int): ResourcesResponseDTO {
-        return httpClient.get("api/unknown") {
+        return httpClient.get("unknown") {
             parameter("page", page)
         }.body<ResourcesResponseDTO>()
     }
