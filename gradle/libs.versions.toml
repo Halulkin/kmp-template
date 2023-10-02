@@ -10,7 +10,7 @@ compose-compiler = "1.5.3"
 compose-material3 = "1.1.1"
 androidx-activityCompose = "1.7.2"
 
-compose_bom = "2023.09.00"
+compose_bom = "2023.09.02"
 lifecycle = "2.6.2"
 androidx_appcompat = "1.6.1"
 androidx_core = "1.12.0"
