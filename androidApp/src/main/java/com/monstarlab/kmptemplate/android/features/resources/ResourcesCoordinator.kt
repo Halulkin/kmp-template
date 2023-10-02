@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import com.monstarlab.kmptemplate.features.resources.domain.model.Resource
 import com.monstarlab.kmptemplate.android.core.ui.extensions.toast
+import com.monstarlab.kmptemplate.features.resources.domain.model.Resource
+import org.koin.compose.koinInject
 
 /**
  * Screen's coordinator which is responsible for handling actions from the UI layer
@@ -24,7 +25,7 @@ class ResourcesCoordinator(
 
 @Composable
 fun rememberResourcesCoordinator(
-    viewModel: ResourcesViewModel,
+    viewModel: ResourcesViewModel = koinInject(),
     context: Context = LocalContext.current
 ): ResourcesCoordinator {
     return remember(viewModel, context) {
