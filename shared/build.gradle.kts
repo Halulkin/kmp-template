@@ -31,6 +31,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // Compose
+                implementation(compose.runtime)
+                implementation(compose.foundation)
                 // Ktor
                 api(libs.ktor.core)
                 api(libs.ktor.serialization.kotlinx.json)
@@ -43,6 +46,8 @@ kotlin {
                 api(libs.koin.core)
                 // MOKO - MVVM
                 api(libs.moko.mvvm.core)
+                // Voyager
+                api(libs.bundles.voyager)
             }
         }
         val commonTest by getting {

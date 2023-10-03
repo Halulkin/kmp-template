@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.0-alpha04"
+agp = "8.3.0-alpha06"
 kotlin = "1.9.10"
 kotlin_coroutines = "1.7.3"
 ksp = "1.9.10-1.0.13"
@@ -10,7 +10,7 @@ compose-compiler = "1.5.3"
 compose-material3 = "1.1.1"
 androidx-activityCompose = "1.7.2"
 
-compose_bom = "2023.09.00"
+compose_bom = "2023.09.02"
 lifecycle = "2.6.2"
 androidx_appcompat = "1.6.1"
 androidx_core = "1.12.0"
@@ -26,6 +26,7 @@ nstack = "3.2.9"
 okhttp = "5.0.0-alpha.10"
 google_accompanist = "0.32.0"
 
+voyager = "1.0.0-rc07"
 
 
 [libraries]
@@ -105,18 +106,37 @@ ktor_client_ios = { group = "io.ktor", name = "ktor-client-darwin", version.ref 
 ktor_client_content_negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor_serialization_kotlinx_json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor_client_logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
-
+#-------------------------
+# OKHTTP
+#-------------------------
 okhttp_logger = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 #-------------------------
 # MOKO
 #-------------------------
 moko_mvvm_core = { group = "dev.icerock.moko", name = "mvvm-core", version.ref = "moko" } # only ViewModel, EventsDispatcher, Dispatchers.UI
+#-------------------------
+# Voyager
+#-------------------------
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-androidx = { module = "cafe.adriel.voyager:voyager-androidx", version.ref = "voyager" }
+voyager-hilt = { module = "cafe.adriel.voyager:voyager-hilt", version.ref = "voyager" }
+voyager-kodein = { module = "cafe.adriel.voyager:voyager-kodein", version.ref = "voyager" }
+voyager-rxjava = { module = "cafe.adriel.voyager:voyager-rxjava", version.ref = "voyager" }
 
 [bundles]
 google_accompanist = [
     "google_accompanist_systemuicontroller",
     "google_accompanist_placeholder_material",
     "google_accompanist_permissions"
+]
+
+voyager = [
+    "voyager-navigator",
+    "voyager-koin"
 ]
 
 [plugins]

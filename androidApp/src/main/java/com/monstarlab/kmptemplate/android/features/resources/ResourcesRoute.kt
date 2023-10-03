@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun ResourcesRoute(
-    coordinator: ResourcesCoordinator
+    coordinator: ResourcesCoordinator = rememberResourcesCoordinator()
 ) {
     // State observing and declarations
     val uiState by coordinator.screenStateFlow.collectAsState(ResourcesState())

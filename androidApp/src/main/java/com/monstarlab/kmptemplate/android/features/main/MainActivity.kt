@@ -10,8 +10,9 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import cafe.adriel.voyager.navigator.Navigator
 import com.monstarlab.kmptemplate.android.designsystem.theme.AppTheme
-import com.monstarlab.kmptemplate.android.features.login.ui.LoginRoute
+import com.monstarlab.kmptemplate.android.features.login.ui.Login
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
     private fun content() {
         setContent {
             AppTheme {
-                LoginRoute()
+                Navigator(Login())
             }
         }
     }
