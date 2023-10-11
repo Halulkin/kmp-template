@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import com.monstarlab.kmptemplate.features.resources.ui.ResourcesState
 
 @Composable
 fun ResourcesRoute(

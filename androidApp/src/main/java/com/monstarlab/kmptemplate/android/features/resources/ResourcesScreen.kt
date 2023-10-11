@@ -10,16 +10,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.monstarlab.kmptemplate.features.resources.domain.model.Resource
 import com.monstarlab.kmptemplate.android.core.ui.extensions.animatedVisibilityItem
 import com.monstarlab.kmptemplate.android.core.ui.previews.LightDarkPreview
 import com.monstarlab.kmptemplate.android.designsystem.components.AppTopBar
 import com.monstarlab.kmptemplate.android.designsystem.theme.AppTheme
 import com.monstarlab.kmptemplate.android.designsystem.theme.Theme
 import com.monstarlab.kmptemplate.android.features.resources.components.ResourceItem
+import com.monstarlab.kmptemplate.features.resources.domain.model.Resource
+import com.monstarlab.kmptemplate.features.resources.ui.ResourcesState
 
 @Composable
 fun ResourcesScreen(
@@ -51,6 +53,8 @@ fun ResourcesScreen(
             }
 
             items(state.resources) { resource ->
+
+                Text(text = resource.name)
                 ResourceItem(
                     resource = resource,
                     modifier = Modifier.clickable {

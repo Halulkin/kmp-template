@@ -1,7 +1,6 @@
-package com.monstarlab.kmptemplate.android.features.resources
+package com.monstarlab.kmptemplate.features.resources.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.monstarlab.kmptemplate.features.ViewModel
 import com.monstarlab.kmptemplate.core.error.toError
 import com.monstarlab.kmptemplate.features.resources.domain.usecase.GetResourcesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +14,6 @@ class ResourcesViewModel(
 ) : ViewModel() {
 
     private val _stateFlow: MutableStateFlow<ResourcesState> = MutableStateFlow(ResourcesState())
-
     val stateFlow: StateFlow<ResourcesState> = _stateFlow.asStateFlow()
 
     init {

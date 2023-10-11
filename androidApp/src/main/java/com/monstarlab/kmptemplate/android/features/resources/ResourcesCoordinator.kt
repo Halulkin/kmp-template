@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.monstarlab.kmptemplate.android.core.ui.extensions.toast
 import com.monstarlab.kmptemplate.features.resources.domain.model.Resource
+import com.monstarlab.kmptemplate.features.resources.ui.ResourcesViewModel
 import org.koin.compose.koinInject
 
 /**
