@@ -1,16 +1,29 @@
 import SwiftUI
 import shared
 
-struct ContentView: View {
-	let greet = Greeting().greet()
+private let ResourcesRoute = "login"
 
-	var body: some View {
-		Text(greet)
-	}
+struct ContentView: View {
+    
+    @State private var route = [String]()
+    
+    var body: some View {
+        NavigationStack(path: $route) {
+            LoginView(viewModel: LoginViewModelHelper().loginViewModel)
+            .navigationDestination(for: String.self) { destination in
+                switch (destination) {
+                case ResourcesRoute:
+                    ResourcesView()
+                default:
+                    Text("None")
+                }
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+    static var previews: some View {
+        ContentView()
+    }
 }
