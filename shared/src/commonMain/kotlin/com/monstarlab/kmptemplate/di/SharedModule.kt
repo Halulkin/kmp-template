@@ -1,18 +1,22 @@
 package com.monstarlab.kmptemplate.di
 
 
+import com.monstarlab.kmptemplate.features.auth.data.api.AuthApiImpl
+import com.monstarlab.kmptemplate.features.auth.data.repository.AuthRepositoryImpl
+import com.monstarlab.kmptemplate.features.login.domain.usecase.LoginUseCase
+import com.monstarlab.kmptemplate.features.login.ui.LoginViewModel
+import com.monstarlab.kmptemplate.features.resources.data.api.ResourcesApiImpl
+import com.monstarlab.kmptemplate.features.resources.data.repository.ResourceRepositoryImpl
+import com.monstarlab.kmptemplate.features.resources.domain.usecase.GetResourcesUseCase
+import com.monstarlab.kmptemplate.features.resources.ui.ResourcesViewModel
+import com.monstarlab.kmptemplate.features.user.data.api.UsersApiImpl
+import com.monstarlab.kmptemplate.features.user.data.repository.UserRepositoryImpl
 import io.ktor.client.HttpClient
-import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpRequestRetry
 import io.ktor.client.plugins.addDefaultResponseValidation
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.http.ContentType
-import io.ktor.http.HttpHeaders
-import io.ktor.http.URLProtocol
-import io.ktor.http.append
-import io.ktor.http.headers
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +31,39 @@ const val BASE_URL = "reqres.in/api"
 fun sharedModules() = listOf(
     coroutinesModule,
     networkModule,
+    authModule,
+    userModule,
+    resourcesModule,
+    loginModule
 )
+
+val authModule = module {
+    single { AuthApiImpl(get()) }
+    single { AuthRepositoryImpl(get() as AuthApiImpl) }
+}
+
+val userModule = module {
+    single { UsersApiImpl(get()) }
+    single { UserRepositoryImpl(get() as UsersApiImpl) }
+}
+
+val resourcesModule = module {
+    single { ResourcesViewModel(get()) }
+    single { GetResourcesUseCase(get() as ResourceRepositoryImpl) }
+    single { ResourceRepositoryImpl(get() as ResourcesApiImpl) }
+    single { ResourcesApiImpl(get()) }
+}
+
+val loginModule = module {
+    single { LoginViewModel(get()) }
+    single {
+        LoginUseCase(
+            get() as AuthRepositoryImpl,
+            get() as UserRepositoryImpl
+        )
+    }
+}
+
 
 val coroutinesModule = module {
     single<CoroutineDispatcher>(qualifier = named("DefaultDispatcher")) { Dispatchers.Default }
