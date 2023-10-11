@@ -11,7 +11,7 @@ import io.ktor.util.InternalAPI
 class AuthApiImpl(private val httpClient: HttpClient) : AuthApi {
     @OptIn(InternalAPI::class)
     override suspend fun postLogin(email: String, password: String): TokenResponseDTO {
-        return httpClient.post("login") {
+        return httpClient.post("https://reqres.in/api/login") {
             body = FormDataContent(Parameters.build {
                 append("email", email)
                 append("password", password)
