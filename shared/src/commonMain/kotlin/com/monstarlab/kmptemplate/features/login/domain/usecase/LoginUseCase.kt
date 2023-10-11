@@ -10,10 +10,7 @@ class LoginUseCase(
 ) {
 
     suspend operator fun invoke(email: String, password: String) = suspendRunCatching {
-        println("LoginUseCase: Logging in")
         authRepository.login(email, password)
-
-        println("LoginUseCase: Logged in")
         userRepository.get()
     }
 }
