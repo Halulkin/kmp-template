@@ -44,8 +44,6 @@ kotlin {
                 api(libs.kotlin.coroutines.core)
                 // Koin
                 api(libs.koin.core)
-                // MOKO - MVVM
-                api(libs.moko.mvvm.core)
                 // Voyager
                 api(libs.bundles.voyager)
             }
@@ -57,6 +55,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation(libs.android.lifecycle.viewmodel)
                 // Ktor
                 implementation(libs.ktor.client.android)
                 // Kotlin
