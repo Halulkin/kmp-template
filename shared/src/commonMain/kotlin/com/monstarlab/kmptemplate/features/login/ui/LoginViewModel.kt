@@ -1,8 +1,7 @@
-package com.monstarlab.kmptemplate.android.features.login.ui
+package com.monstarlab.kmptemplate.features.login.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.monstarlab.kmptemplate.core.error.toError
+import com.monstarlab.kmptemplate.features.ViewModel
 import com.monstarlab.kmptemplate.features.login.domain.usecase.LoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +14,6 @@ class LoginViewModel(
 ) : ViewModel() {
 
     private val _stateFlow: MutableStateFlow<LoginState> = MutableStateFlow(LoginState())
-
     val stateFlow: StateFlow<LoginState> = _stateFlow.asStateFlow()
 
     fun onEmailChange(value: String) {
