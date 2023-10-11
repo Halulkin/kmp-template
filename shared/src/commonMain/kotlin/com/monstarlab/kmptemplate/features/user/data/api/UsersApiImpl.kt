@@ -9,6 +9,6 @@ class UsersApiImpl(
     private val httpClient: HttpClient
 ) : UsersApi {
     override suspend fun getUser(): UserResponseDTO {
-        return httpClient.get(urlString = "users/2").body<UserResponseDTO>()
+        return httpClient.get(urlString = "https://reqres.in/api/users/2").body<UserResponseDTO>()
     }
 }

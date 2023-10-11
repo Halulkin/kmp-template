@@ -25,9 +25,6 @@ import kotlinx.serialization.json.Json
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-const val BASE_URL = "reqres.in/api"
-
-
 fun sharedModules() = listOf(
     coroutinesModule,
     networkModule,
@@ -95,15 +92,6 @@ val networkModule = module {
                     override fun log(message: String) {
                         println(message)
                     }
-                }
-            }
-            install(DefaultRequest) {
-                headers {
-                    append(HttpHeaders.ContentType, ContentType.Application.Json)
-                }
-                url {
-                    protocol = URLProtocol.HTTPS
-                    host = BASE_URL
                 }
             }
         }
